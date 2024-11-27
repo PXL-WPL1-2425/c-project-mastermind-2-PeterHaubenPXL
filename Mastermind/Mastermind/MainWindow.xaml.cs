@@ -274,24 +274,21 @@ namespace Mastermind
             }
         }
 
+        /// <summary>
+        /// The timer = stoped
+        /// </summary>
         private void StopCountdown()
         {
-            /// <summary>
-            /// The timer = stoped and
-            /// attemps + 1
-            /// </summary>
-
             timer.Stop();
         }
 
+        /// <summary>
+        /// The timer = started
+        /// from in generateButton_Click or
+        /// from in controlButton_Click
+        /// </summary>
         private void StartCountdown()
         {
-            /// <summary>
-            /// The timer = started
-            /// from in generateButton_Click or
-            /// from in controlButton_Click
-            /// </summary>
-
             timer.Start();
         }
 
@@ -1246,10 +1243,17 @@ namespace Mastermind
         {
             if(gameStarted == true)
             {
+                StopCountdown(); 
+
                 MessageBoxResult result = MessageBox.Show("Wilt u het spel vroegtijdig beëindigen?", $"Poging {attempts + 1}/10", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
 
                 if (result == MessageBoxResult.No)
                 {
+                    if(debugStackPanel.Visibility == Visibility.Hidden)
+                    {
+                        StartCountdown();
+                    }
+                    
                     e.Cancel = true;
                 }
             }
