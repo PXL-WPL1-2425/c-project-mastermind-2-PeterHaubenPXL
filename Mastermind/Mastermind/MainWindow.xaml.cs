@@ -912,28 +912,24 @@ namespace Mastermind
 
                 if (colorCode1 == chosenColorCode1)
                 {
-                    //lbl.BorderBrush = Brushes.DarkRed;
                     colorPosition1 = true;
                     color1 = true;
                 }
 
                 if (colorCode2 == chosenColorCode2)
                 {
-                    //lbl.BorderBrush = Brushes.DarkRed;
                     colorPosition2 = true;
                     color2 = true;
                 }
 
                 if (colorCode3 == chosenColorCode3)
                 {
-                    //lbl.BorderBrush = Brushes.DarkRed;
                     colorPosition3 = true;
                     color3 = true;
                 }
 
                 if (colorCode4 == chosenColorCode4)
                 {
-                    //lbl.BorderBrush = Brushes.DarkRed;
                     colorPosition4 = true;
                     color4 = true;
                 }
@@ -1243,6 +1239,19 @@ namespace Mastermind
             {
                 debugStackPanel.Visibility = Visibility.Visible;
                 StopCountdown();
+            }
+        }
+
+        private void mastermindWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if(gameStarted == true)
+            {
+                MessageBoxResult result = MessageBox.Show("Wilt u het spel vroegtijdig beëindigen?", $"Poging {attempts + 1}/10", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
+
+                if (result == MessageBoxResult.No)
+                {
+                    e.Cancel = true;
+                }
             }
         }
 

@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="Mastermind" Height="1040" Width="550"
         Loaded="Window_Loaded"
+        Closing="mastermindWindow_Closing"
         Background="Black"
         KeyDown="mastermindWindow_KeyDown"
         Name="mastermindWindow"
